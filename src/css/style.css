@@ -1,0 +1,119 @@
+.dashboard,
+.instance-status {
+    display: flex;
+}
+
+.instances,
+.messenger-list {
+    width: 350px;
+    height: 400px;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 2px;
+    overflow: auto;
+}
+
+.instances {
+    margin-right: 20px;
+}
+
+.messenger-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.instance-list {
+    list-style: none;
+    padding: 0;
+}
+
+.instance-item {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.instance-item span {
+    padding: 2px 0;
+}
+
+.status {
+    width: 15px;
+    height: 11px;
+    left: 56px;
+    border-radius: 50%;
+    background-color: black;
+    position: absolute;
+}
+
+.status::after {
+    content: 'Stoped';
+    position: absolute;
+    left: 23px;
+    top: -1px;
+}
+
+.instance-item.Started .status {
+    background-color: green;
+}
+
+.instance-item.Started .status::after {
+    content: 'Running';
+}
+
+.instance-actions {
+    display: flex;
+    position: relative;
+}
+
+.status-icon {
+    width: 16px;
+    height: 16px;
+    padding: 2px 4px;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.stop-start {
+    background-image: url('../img/play.png');
+}
+
+.instance-item.Started .stop-start {
+    background-image: url('../img/pause.png');
+}
+
+.close {
+    background-image: url('../img/close.png');
+}
+
+.worklog-list {
+    height: 100%;
+    overflow: auto;
+    padding: 0;
+    padding-right: 15px;
+    font-size: 14px;
+}
+
+.instance-i {
+    display: flex;
+    padding: 10px 0;
+    flex-direction: column;
+    align-items: flex-start;
+    color: black;
+}
+
+.new-instance {
+    text-align: center;
+    color: black;
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
