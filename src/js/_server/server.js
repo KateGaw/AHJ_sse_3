@@ -71,7 +71,7 @@ function sendMessage(id, text) {
             mess: text,
             dateTime: new Date(),
         });
-        [...wsServer.instance][0].send(message);
+        [...wsServer.clients][0].send(message);
     } catch (err) {
         console.log(`Ошибка! - ${err}`);
     }
@@ -132,13 +132,13 @@ wsServer.on('connection', (ws, request) => {
     console.log('connection');
     ws.on('message', (mess) => {
         console.log('message');
-        [...wsServer.instance]
+        [...wsServer.clients]
         .filter((o) => o.readyState === WS.OPEN)
             .forEach((o) => o.send(mess));
     });
     ws.on('close', () => {
         console.log('close');
-        [...wsServer.instance]
+        [...wsServer.clients]
         .filter((o) => o.readyState === WS.OPEN)
             .forEach((o) => o.send(JSON.stringify({ type: 'deleting' })));
     });
@@ -146,7 +146,7 @@ wsServer.on('connection', (ws, request) => {
         console.log('change');
     });
 
-    [...wsServer.instance]
+    [...wsServer.clients]
     .filter((o) => o.readyState === WS.OPEN)
         .forEach((o) => o.send(JSON.stringify({ type: 'adding' })));
 });
